@@ -1,13 +1,28 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
+print("Creating SQLite Database...")
+
 engine = create_engine("sqlite:///bluestock_mf.db")
 
-fund_master = pd.read_csv("data/raw/01_fund_master.csv")
-nav = pd.read_csv("data/processed/02_nav_history_clean.csv")
-performance = pd.read_csv("data/processed/07_scheme_performance_clean.csv")
-transactions = pd.read_csv("data/processed/08_investor_transactions_clean.csv")
+# Load datasets
+fund_master = pd.read_csv(
+    "data/raw/01_fund_master.csv"
+)
 
+nav_history = pd.read_csv(
+    "data/processed/02_nav_history_clean.csv"
+)
+
+scheme_performance = pd.read_csv(
+    "data/processed/07_scheme_performance_clean.csv"
+)
+
+investor_transactions = pd.read_csv(
+    "data/processed/08_investor_transactions_clean.csv"
+)
+
+# Load into SQLite
 fund_master.to_sql(
     "fund_master",
     engine,
@@ -15,25 +30,25 @@ fund_master.to_sql(
     index=False
 )
 
-nav.to_sql(
+nav_history.to_sql(
     "nav_history",
     engine,
     if_exists="replace",
     index=False
 )
 
-performance.to_sql(
+scheme_performance.to_sql(
     "scheme_performance",
     engine,
     if_exists="replace",
     index=False
 )
 
-transactions.to_sql(
+investor_transactions.to_sql(
     "investor_transactions",
     engine,
     if_exists="replace",
     index=False
 )
 
-print("Database Created Successfully")
+print("✅ Database Created Successfully")
