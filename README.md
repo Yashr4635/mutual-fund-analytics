@@ -32,6 +32,15 @@ The project analyzes Mutual Fund data using Python, SQL, and Power BI to generat
 
 ---
 
+## 📊 Advanced Analytics
+
+- Historical VaR (95%)
+- Conditional VaR (CVaR)
+- Rolling 90-Day Sharpe Ratio
+- SIP Continuity Analysis
+- Sector HHI Concentration
+- Risk-Based Fund Recommendation Engine
+
 # Project Objectives
 
 - Analyze Mutual Fund industry growth
